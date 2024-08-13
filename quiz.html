@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - É Assim que Acaba</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        header {
+            background-color: #ff009d;
+            color: #fff;
+            padding: 10px;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        .options {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+            background-color: #f34fca;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #fdb0e6;
+        }
+
+        .correct-answer {
+            color: green;
+            font-weight: bold;
+        }
+
+        .incorrect-answer {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Quiz - É Assim que Acaba</h1>
+    </header>
+
+    <main>
+        <div class="question" id="question1">
+            <h2>Pergunta 1: Quem é a autora do livro "É Assim que Acaba"?</h2>
+            <div class="options">
+                <button onclick="checkAnswer('question1', 'a')">Colleen Hoover</button>
+                <button onclick="checkAnswer('question1', 'b')">Taylor Jenkins Reid</button>
+                <button onclick="checkAnswer('question1', 'c')">Jojo Moyes</button>
+            </div>
+            <p class="correct-answer" style="display: none;">Resposta correta: Colleen Hoover</p>
+        </div>
+
+        <div class="question" id="question2">
+            <h2>Pergunta 2: Qual é o gênero literário predominante em "É Assim que Acaba"?</h2>
+            <div class="options">
+                <button onclick="checkAnswer('question2', 'a')">Romance Contemporâneo</button>
+                <button onclick="checkAnswer('question2', 'b')">Ficção Científica</button>
+                <button onclick="checkAnswer('question2', 'c')">Suspense Psicológico</button>
+            </div>
+            <p class="correct-answer" style="display: none;">Resposta correta: Romance Contemporâneo</p>
+        </div>
+
+        <div class="question" id="question3">
+            <h2>Pergunta 3: Qual é o tema central abordado em "É Assim que Acaba"?</h2>
+            <div class="options">
+                <button onclick="checkAnswer('question3', 'a')">Amor e Perda</button>
+                <button onclick="checkAnswer('question3', 'b')">Viagem no Tempo</button>
+                <button onclick="checkAnswer('question3', 'c')">Conspirações Governamentais</button>
+            </div>
+            <p class="correct-answer" style="display: none;">Resposta correta: Amor e Perda</p>
+        </div>
+    </main>
+
+    <script>
+        function checkAnswer(questionId, selectedOption) {
+            const question = document.getElementById(questionId);
+            const correctAnswer = question.querySelector('.correct-answer');
+
+            // Verifica se a opção selecionada é a correta e exibe a resposta correta
+            if (selectedOption === 'a') {
+                highlightCorrectAnswer(question, 0);
+            } else if (selectedOption === 'b') {
+                highlightCorrectAnswer(question, 1);
+            } else if (selectedOption === 'c') {
+                highlightCorrectAnswer(question, 2);
+            }
+            correctAnswer.style.display = 'block';
+        }
+
+        function highlightCorrectAnswer(question, correctIndex) {
+            const options = question.querySelectorAll('.options button');
+            options.forEach((option, index) => {
+                if (index === correctIndex) {
+                    option.classList.add('correct-answer');
+                } else {
+                    option.classList.add('incorrect-answer');
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
